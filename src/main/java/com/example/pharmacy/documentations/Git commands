@@ -10,7 +10,9 @@ git pull origin main -> To update all the changes that are made in main (Optiona
 
 git merge "branchname"-> this branchname will be merged to the main
 
-git push origin main -> to push the updated main to github 
+git push origin main -> to push the updated main to github
+
+git push -u origin "branchname"-> to push this branch to github(not necessary to merge it to main)
 
 
 
