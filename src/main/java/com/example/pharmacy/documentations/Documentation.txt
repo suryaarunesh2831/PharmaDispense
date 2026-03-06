@@ -15,5 +15,5 @@ Pharmacy Report:
 	Update:
 		- update by id	// Admin has access to update
 	Delete:
-		- delete by id  // Admin delete the repor
+		- delete by id  // Admin delete the reporttt
 
