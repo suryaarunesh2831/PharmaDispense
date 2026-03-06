@@ -1,0 +1,16 @@
+First Time push : Follow the instructions given below the repo
+To create a new branch and switch to it : git checkout -b "branchname"
+To update the branch :
+
+git add . ->to add all the changed files
+git commit -m -> to  commit that change with a message
+git checkout "branchname that you wanna switch to"-> to switch to a particular branch
+
+git pull origin main -> To update all the changes that are made in main (Optional)
+
+git merge "branchname"-> this branchname will be merged to the main
+
+git push origin main -> to push the updated main to github 
+
+
+
