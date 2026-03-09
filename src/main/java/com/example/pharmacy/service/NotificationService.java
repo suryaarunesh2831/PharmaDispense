@@ -38,6 +38,14 @@ public class NotificationService {
     public List<Notification> findByStatus(NotificationStatus status){
         return repo.findByStatus(status);
     }
+
+    public void updateStatus(Long id,NotificationStatus status){
+        Notification notification = repo.findById(id).orElse(null);
+        if(notification!=null){
+            notification.setStatus(status);
+            repo.save(notification);
+        }
+    }
     public void addUser(Long notificationId,int user_id){
         Notification notification = repo.findById(notificationId).orElse(null);
         if(notification!=null){
