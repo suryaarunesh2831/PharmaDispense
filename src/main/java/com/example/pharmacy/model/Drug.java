@@ -20,23 +20,12 @@ public class Drug {
 
 
     String genericName;
-
-
     String BrandName;
-
-
     String strength;
-
-
     String route;
-
-
     String classification;
-
-
     String status;
-//
-//    @OneToOne
+    //    @OneToOne
 //    private POItem poitem;
 //
 //    @OneToOne

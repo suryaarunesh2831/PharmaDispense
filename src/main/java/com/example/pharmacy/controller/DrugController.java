@@ -24,7 +24,6 @@ public class DrugController {
     public Drug getDrugById(@PathVariable Long id)
     {
         return drugservice.getDrugById(id);
-        //durrrrrrrrr
     }
     @GetMapping("/get/All")
     public List<Drug> getAll()
