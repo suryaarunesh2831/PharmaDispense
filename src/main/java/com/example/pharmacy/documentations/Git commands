@@ -14,5 +14,47 @@ git push origin main -> to push the updated main to github
 
 git push -u origin "branchname"-> to push this branch to github(not necessary to merge it to main)
 
+Creating Individual Branches for Teammates — Clean Notes
+1. Give Access to Teammates
+
+From the main repo, add each teammate as a collaborator.
+Go to: Repository → Settings → Collaborators & Teams
+Ensure all teammates have proper access (Write access).
+
+
+2. Teammates Clone the Repo
+Each teammate clones the repository locally:
+git clone <repo-url>
+
+
+3. View All Remote Branches
+Before creating or switching to a branch, teammates can view all remote branches using:
+git branch -r
+
+This shows something like:
+origin/main
+origin/user1-branch
+origin/user2-branch
+
+
+4. Create & Track Their Own Branch
+If a matching remote branch already exists (created by admin), teammates can link to it locally:
+git checkout -b <branch-name> origin/<branch-name>
+
+Meaning:
+
+-b <branch-name> → creates a local branch
+origin/<branch-name> → connects it to the remote branch
+
+Example:
+git checkout -b john-feature origin/john-feature
+
+
+5. Or Create a Fresh Branch (if not created already)
+If they want to create a brand‑new branch:
+git checkout -b <new-branch>
+git push -u origin <new-branch>
+
+
 
 
