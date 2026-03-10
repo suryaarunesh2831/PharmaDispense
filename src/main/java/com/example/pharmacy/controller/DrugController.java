@@ -15,16 +15,21 @@ public class DrugController {
     DrugService drugservice;
 
     @PostMapping("/post")
-    public  Drug createdrug(@RequestBody Drug drugitem)
+     public  Drug createdrug(@RequestBody Drug drugitem)
     {
-        return drugservice.createdrug(drugitem);
+          return drugservice.createdrug(drugitem);
+
+    }
+    @PostMapping("/post/All")
+    public  List<Drug> createdrugs(@RequestBody List<Drug>drugitems)
+    {
+        return drugservice.createdrugs(drugitems);
 
     }
     @GetMapping("/get/{id}")
     public Drug getDrugById(@PathVariable Long id)
     {
         return drugservice.getDrugById(id);
-        //durrrrrrrrr
     }
     @GetMapping("/get/All")
     public List<Drug> getAll()
@@ -39,12 +44,15 @@ public class DrugController {
     @DeleteMapping("/delete/{id}")
     public String deleteDrugById(@PathVariable Long id)
     {
+
         return drugservice.deleteDrugById(id);
     }
     @DeleteMapping("/delete/All")
     public String deleteAll()
     {
-        drugservice.deleteAll();
+
         return drugservice.deleteAll();
     }
+
+
 }

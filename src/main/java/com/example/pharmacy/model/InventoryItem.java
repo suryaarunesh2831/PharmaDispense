@@ -1,10 +1,9 @@
 package com.example.pharmacy.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -13,6 +12,7 @@ import java.util.Date;
 public class InventoryItem {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long InventoryID;
 
     @OneToOne
@@ -21,11 +21,71 @@ public class InventoryItem {
 
 
     private int BatchNumber;
-    private Date ExpiryDate;
+    private String ExpiryDate;
+
     private long QuantityonHand;
     private String ReorderLevel;
 
+    public long getInventoryID() {
+        return InventoryID;
+    }
+
+    public void setInventoryID(long inventoryID) {
+        InventoryID = inventoryID;
+    }
+
+    public Drug getDrugobj() {
+        return drugobj;
+    }
+
+    public void setDrugobj(Drug drugobj) {
+        this.drugobj = drugobj;
+    }
+
+    public int getBatchNumber() {
+        return BatchNumber;
+    }
+
+    public void setBatchNumber(int batchNumber) {
+        BatchNumber = batchNumber;
+    }
+
+    public String  getExpiryDate() {
+        return ExpiryDate;
+    }
+
+    public void setExpiryDate(String expiryDate) {
+        ExpiryDate = expiryDate;
+    }
+
+    public long getQuantityonHand() {
+        return QuantityonHand;
+    }
+
+    public void setQuantityonHand(long quantityonHand) {
+        QuantityonHand = quantityonHand;
+    }
+
+    public String getReorderLevel() {
+        return ReorderLevel;
+    }
+
+    public void setReorderLevel(String reorderLevel) {
+        ReorderLevel = reorderLevel;
+    }
+
+    public StockTransaction getStockt() {
+        return stockt;
+    }
+
+    public void setStockt(StockTransaction stockt) {
+        this.stockt = stockt;
+    }
+
+
+
     @OneToOne(mappedBy = "inventoryItem")
+    @JsonBackReference
     private StockTransaction stockt;
 
 }

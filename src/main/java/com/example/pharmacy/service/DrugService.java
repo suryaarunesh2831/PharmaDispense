@@ -14,9 +14,14 @@ public class DrugService {
     @Autowired
     DrugRepo drugRepo;
 
-    public  Drug createdrug(Drug drugitem)
+   public  Drug createdrug(Drug drugitem)
     {
-        return drugRepo.save(drugitem);
+         return drugRepo.save(drugitem);
+    }
+    public  List<Drug>createdrugs(List<Drug>drugitems)
+    {
+        return drugRepo.saveAll(drugitems);
+
     }
 
     public Drug getDrugById( Long id)
@@ -40,6 +45,8 @@ public class DrugService {
         existing.setClassification(request.getClassification());
         existing.setStatus(request.getStatus());
 
+
+
         return drugRepo.save(existing);
 
 
@@ -47,8 +54,8 @@ public class DrugService {
 
     public String deleteDrugById(Long id)
     {
-        drugRepo.deleteById(id);
-        return "The drug has been successfully deleted";
+         drugRepo.deleteById(id);
+         return "The drug has been successfully deleted";
     }
 
     public String deleteAll()

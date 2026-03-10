@@ -15,20 +15,34 @@ public class PrescriptionItem {
 
     @Id
     String ItemID;
+
    //Prescryption ID
+
    //DrugId
+
     @OneToOne
     @JoinColumn(name="Drug ID")
     private Drug drugObj;
 
+
    int Dose;
    int Frequency;
+
    int DurationDays;
+
    int Quantity;
 
 
    @ManyToOne
    @JoinColumn(name="Prescription ID")
    private Prescription prescription;
+
+
+
+
+
+
+
+
 
 }

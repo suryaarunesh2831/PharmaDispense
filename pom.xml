@@ -21,7 +21,7 @@
 
     <properties>
         <!-- Build against Java 24 -->
-        <java.version>24</java.version>
+        <java.version>21</java.version>
 
         <!-- Lombok version: 1.18.38+ supports JDK 24; using latest for future-proofing -->
         <lombok.version>1.18.42</lombok.version>

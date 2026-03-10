@@ -13,8 +13,16 @@ public class DispenseRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long dispenseId;
+
+
+
+
+
+
     private Long DispensedQuantity;
+
     private LocalDateTime  DispensedDate;
 
     @OneToMany

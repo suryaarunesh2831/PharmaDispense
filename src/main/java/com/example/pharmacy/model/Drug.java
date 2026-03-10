@@ -1,5 +1,6 @@
 package com.example.pharmacy.model;
 
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,9 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "drugId"
+)
 public class Drug {
 
     @Id
@@ -30,6 +32,21 @@ public class Drug {
 
     String route;
 
+    public List<DrugInteraction> getListofinteractions() {
+        return listofinteractions;
+    }
+
+    public void setListofinteractions(List<DrugInteraction> listofinteractions) {
+        this.listofinteractions = listofinteractions;
+    }
+
+    public List<DrugInteraction> getInteractionwith() {
+        return interactionwith;
+    }
+
+    public void setInteractionwith(List<DrugInteraction> interactionwith) {
+        this.interactionwith = interactionwith;
+    }
 
     String classification;
 
@@ -39,14 +56,20 @@ public class Drug {
 //    @OneToOne
 //    private POItem poitem;
 //
-//    @OneToOne
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JsonBackReference
 //    private InventoryItem inveitem;
 //
 //    @OneToOne
 //    private PrescriptionItem pitem;
 //
-//    @ManyToMany
-//    List<DrugInteraction> drugIntegrations;
+
+
+    @OneToMany(mappedBy = "drug")
+    private List<DrugInteraction>listofinteractions;//in the case where drug is the main drug
+
+    @OneToMany(mappedBy = "interactingdrug")
+    private List<DrugInteraction>interactionwith; //in the case where drug is the interactingdrug
 
     public Long getDrugId() {
         return drugId;
@@ -104,54 +127,8 @@ public class Drug {
         this.status = status;
     }
 
-//    public POItem getPoitem() {
-//        return poitem;
-//    }
-//
-//    public void setPoitem(POItem poitem) {
-//        this.poitem = poitem;
-//    }
-//
-//    public InventoryItem getInveitem() {
-//        return inveitem;
-//    }
-//
-//    public void setInveitem(InventoryItem inveitem) {
-//        this.inveitem = inveitem;
-//    }
-//
-//    public PrescriptionItem getPitem() {
-//        return pitem;
-//    }
-//
-//    public void setPitem(PrescriptionItem pitem) {
-//        this.pitem = pitem;
-//    }
-//
-//    public List<DrugInteraction> getDrugIntegrations() {
-//        return drugIntegrations;
-//    }
-//
-//    public void setDrugIntegrations(List<DrugInteraction> drugIntegrations) {
-//        this.drugIntegrations = drugIntegrations;
-//    }
-//
-//    public List<DrugInteraction> getDrugInteractions() {
-//        return drugInteractions;
-//    }
-//
-//    public void setDrugInteractions(List<DrugInteraction> drugInteractions) {
-//        this.drugInteractions = drugInteractions;
-//    }
 
-    @ManyToMany
-    @JoinTable(
-            name="Interaction Table",
-            joinColumns = @JoinColumn(name="Drug ID"),
-            inverseJoinColumns = @JoinColumn(name="Interaction ID")
 
-    )
-    List<DrugInteraction>drugInteractions=new ArrayList<>();
 
 
 
