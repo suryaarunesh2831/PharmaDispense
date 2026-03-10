@@ -39,40 +39,5 @@ public class NotificationService {
         return repo.findByStatus(status);
     }
 
-    public void updateStatus(Long id,NotificationStatus status){
-        Notification notification = repo.findById(id).orElse(null);
-        if(notification!=null){
-            notification.setStatus(status);
-            repo.save(notification);
-        }
-    }
-    public void addUser(Long notificationId,int user_id){
-        Notification notification = repo.findById(notificationId).orElse(null);
-        if(notification!=null){
-            List<User> users = notification.getUserList();
-            users.add(user_repo.findById(user_id).orElse(null));
-            notification.setUserList(users);
-            repo.save(notification);
-        }
-
-    }
-    public void assignToUsers(Long notificationId, List<User> userList){
-        Notification notification = repo.findById(notificationId).orElse(null);
-        if(notification!=null){
-            notification.setUserList(userList);
-            repo.save(notification);
-        }
-
-    }
-
-    public void removeUser(Long notificationId,int user_id){
-        Notification notification = repo.findById(notificationId).orElse(null);
-        if(notification!=null){
-            List<User> users = notification.getUserList();
-            users.remove(user_repo.findById(user_id).orElse(null));
-            notification.setUserList(users);
-            repo.save(notification);
-        }
-    }
 
 }

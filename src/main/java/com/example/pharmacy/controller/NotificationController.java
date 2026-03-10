@@ -43,24 +43,4 @@ public class NotificationController {
         return service.findByStatus(status);
     }
 
-    @PatchMapping("/{id}/update/{status}")
-    public void updateStatus(@PathVariable Long id,@PathVariable NotificationStatus status){
-        service.updateStatus(id,status);
-    }
-
-    @PostMapping("/{id}/update/{user_id}")
-    public void addUser(@PathVariable Long id,@PathVariable int user_id){
-        service.addUser(id,user_id);
-    }
-
-    @PostMapping("/{id}/removeUser/{user_id}")
-    public void removeUser(@PathVariable Long id,@PathVariable int user_id){
-        service.removeUser(id,user_id);
-    }
-
-    @PostMapping("/{id}/assignUsers")
-    public void assignUsers(@PathVariable Long id, @RequestBody List<User> userList){
-        service.assignToUsers(id,userList);
-    }
-
 }
