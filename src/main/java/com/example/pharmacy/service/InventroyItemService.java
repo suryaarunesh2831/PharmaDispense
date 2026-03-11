@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class InventroyItemService {
 
@@ -17,6 +19,8 @@ public class InventroyItemService {
 
     @Autowired
     DrugRepo drugRepo;
+
+
 
     public InventoryItem createInventoryItem( InventoryItem inventoryitem)
     {
@@ -76,4 +80,14 @@ public class InventroyItemService {
 
          return "The InventoryItem table  has been successfully cleared";
     }
+    public List<InventoryItem>reorderdrugs()
+    {
+        return inventoryItemRepo.findItemsNeedingReorder();
+    }
+    public Optional<Long> findquantitybasedonDrug(Long drugId)
+    {
+        return inventoryItemRepo.finddrugquantitybasedonId(drugId);
+    }
+
+
 }

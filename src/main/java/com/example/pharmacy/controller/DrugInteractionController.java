@@ -9,43 +9,55 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/api/DrugInteraction")
+@RequestMapping("/PharmaDispense/Drug")
 public class DrugInteractionController {
 
     @Autowired
     DrugInteractionService drugInteractionService;
 
-    @PostMapping("/post")
+    @PostMapping("/create")
     public DrugInteraction createInteraction(@RequestBody DrugInteraction interaction)
     {
         return drugInteractionService.createInteraction(interaction);
 
     }
-    @GetMapping("/get/{id}")
+    @GetMapping("/view/{id}")
     public DrugInteraction getInteractionById(@PathVariable Long id)
     {
         return drugInteractionService.getInteractionById(id);
     }
-    @GetMapping("/get/All")
+    @GetMapping("/view/list")
     public List<DrugInteraction> getAll()
     {
         return drugInteractionService.getAll();
     }
-    @PutMapping("/update/{id}")
+    @PutMapping("/modify/{id}")
     public DrugInteraction updateInteraction(@PathVariable Long id,@RequestBody DrugInteraction request)
     {
         return drugInteractionService.updateInteraction(id,request);
     }
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/remove/{id}")
     public String deleteDrugInteractionById(@PathVariable Long id)
     {
         return drugInteractionService.deleteDrugInteractionById(id);
     }
-    @DeleteMapping("/delete/All")
+    @DeleteMapping("/remove/list")
     public String deleteAll()
     {
 
         return drugInteractionService.deleteAll();
+    }
+
+    @GetMapping("/view/count")
+    public Long findcountofrecords()
+    {
+        return drugInteractionService.findcountofrecords();
+    }
+    @GetMapping("/view/pair/{drugid}")
+    public Long getInteractingDrug(@PathVariable Long drugid)
+    {
+        return drugInteractionService.getInteractingDrug(drugid);
+
     }
 
 

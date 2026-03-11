@@ -8,46 +8,46 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/drug")
+@RequestMapping("/PharmaDispense/Drug")
 public class DrugController {
 
     @Autowired
     DrugService drugservice;
 
-    @PostMapping("/post")
+    @PostMapping("/create")
      public  Drug createdrug(@RequestBody Drug drugitem)
     {
           return drugservice.createdrug(drugitem);
 
     }
-    @PostMapping("/post/All")
+    @PostMapping("/create/list")
     public  List<Drug> createdrugs(@RequestBody List<Drug>drugitems)
     {
         return drugservice.createdrugs(drugitems);
 
     }
-    @GetMapping("/get/{id}")
+    @GetMapping("/view/{id}")
     public Drug getDrugById(@PathVariable Long id)
     {
         return drugservice.getDrugById(id);
     }
-    @GetMapping("/get/All")
+    @GetMapping("/view/list")
     public List<Drug> getAll()
     {
         return drugservice.getAll();
     }
-    @PutMapping("/update/{id}")
+    @PutMapping("/modify/{id}")
     public Drug updatedrug(@PathVariable Long id,@RequestBody Drug request)
     {
         return drugservice.updatedrug(id,request);
     }
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/remove/{id}")
     public String deleteDrugById(@PathVariable Long id)
     {
 
         return drugservice.deleteDrugById(id);
     }
-    @DeleteMapping("/delete/All")
+    @DeleteMapping("/remove/list")
     public String deleteAll()
     {
 

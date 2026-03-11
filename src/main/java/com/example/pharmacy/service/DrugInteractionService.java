@@ -19,7 +19,7 @@ public class DrugInteractionService {
     DrugRepo drugrepo;
 
 
-    public DrugInteraction createInteraction(@RequestBody DrugInteraction interaction)
+    public DrugInteraction createInteraction( DrugInteraction interaction)
     {
         Drug MainDrug=drugrepo.findById(interaction.getDrug().getDrugId()).get();
 
@@ -35,17 +35,16 @@ public class DrugInteractionService {
 
     }
 
-    public DrugInteraction getInteractionById(@PathVariable Long id)
+    public DrugInteraction getInteractionById( Long id)
     {
         return drugInteractionRepo.findById(id).get();
     }
-    @GetMapping("/get/All")
     public List<DrugInteraction> getAll()
     {
         return drugInteractionRepo.findAll();
     }
-    @PutMapping("/update/{id}")
-    public DrugInteraction updateInteraction(@PathVariable Long id, @RequestBody DrugInteraction request)
+
+    public DrugInteraction updateInteraction( Long id, DrugInteraction request)
     {
         DrugInteraction existing=drugInteractionRepo.findById(id).get();
 
@@ -66,14 +65,14 @@ public class DrugInteractionService {
 
 
     }
-    @DeleteMapping("/delete/{id}")
-    public String deleteDrugInteractionById(@PathVariable Long id)
+
+    public String deleteDrugInteractionById( Long id)
     {
 
          drugInteractionRepo.deleteById(id);
          return "The interaction is deleted";
     }
-    @DeleteMapping("/delete/All")
+
     public String deleteAll()
     {
 
@@ -81,5 +80,17 @@ public class DrugInteractionService {
          return "All the interactions are deleted";
     }
 
+    public Long findcountofrecords()
+    {
+        return drugInteractionRepo.findcountofrecords();
+    }
+
+    public Long getInteractingDrug(Long drugid)
+    {
+        DrugInteraction drug=drugInteractionRepo.findById(drugid).get();
+
+        return drug.getInteractingdrug().getDrugId();
+
+    }
 
 }
