@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/report")
+@RequestMapping("/PharmaDispense/PharmacyReport")
 public class PharmacyReportController {
 
 

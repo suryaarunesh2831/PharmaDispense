@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/PharmaDispense/User")
 public class UserController {
     //roles:Physician,Pharmacist,Pharmacy Technician,Inventory Manager,Admin,Nurse
     @Autowired

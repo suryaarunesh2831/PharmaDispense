@@ -1,11 +1,11 @@
 package com.example.pharmacy.model;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 @Entity
-@Data
 @Table(name = "Prescription")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Prescription {
@@ -18,4 +18,9 @@ public class Prescription {
     @ManyToOne
     @JoinColumn(name="physician_id")
     private User user;
+
+    @OneToMany(mappedBy = "prescription", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<PrescriptionItem> item=new ArrayList<>();
+
 }

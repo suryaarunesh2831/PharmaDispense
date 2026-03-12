@@ -2,8 +2,8 @@ package com.example.pharmacy.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -13,22 +13,18 @@ public class DispenseRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long dispenseId;
-    private Long DispensedQuantity;
-    private LocalDateTime  DispensedDate;
+    private int dispenseId;
 
-    @OneToMany
+    @OneToOne
     @JoinColumn(name="Prescription ID")
-    List<Prescription> prescriptionList=new ArrayList<>();
+    Prescription prescription;
 
-     @ManyToOne
+
+    private Long dispensedQuantity;
+    private LocalDate dispensedDate;
+
+     @ManyToOne(cascade = CascadeType.ALL)
      @JoinColumn(name="Pharmacist ID")
      private User user;
-
-
-
-
-
-
 
 }

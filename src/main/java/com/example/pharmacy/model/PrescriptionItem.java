@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -14,9 +15,7 @@ import java.time.LocalDateTime;
 public class PrescriptionItem {
 
     @Id
-    String ItemID;
-   //Prescryption ID
-   //DrugId
+    int ItemID;
     @OneToOne
     @JoinColumn(name="Drug ID")
     private Drug drugObj;
@@ -30,5 +29,4 @@ public class PrescriptionItem {
    @ManyToOne
    @JoinColumn(name="Prescription ID")
    private Prescription prescription;
-
 }

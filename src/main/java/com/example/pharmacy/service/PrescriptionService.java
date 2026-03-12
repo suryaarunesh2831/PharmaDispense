@@ -1,8 +1,11 @@
 package com.example.pharmacy.service;
 
+import com.example.pharmacy.dto.PrescriptionDTORequest;
 import com.example.pharmacy.model.Prescription;
+import com.example.pharmacy.model.PrescriptionItem;
 import com.example.pharmacy.model.User;
 
+import com.example.pharmacy.repository.PrescriptionItemRepository;
 import com.example.pharmacy.repository.PrescriptionRepository;
 import com.example.pharmacy.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +19,22 @@ import java.util.logging.Logger;
 @Service
 public class PrescriptionService {
     @Autowired
+    private PrescriptionItemRepository prescriptionItemRepo;
+    @Autowired
     private PrescriptionRepository prescriptionRepo;
     @Autowired
     private UserRepo userRepo;
-    public Prescription createPrescription(Integer userId, Prescription prescription) {
+    public Prescription createPrescription(Integer userId, PrescriptionDTORequest obj) {
+
         User user = userRepo.findById(userId).orElse(null);
 
         if (user != null) {
+            Prescription prescription = new Prescription();
             prescription.setUser(user);
+            prescription.setCreatedDate(obj.getCreatedDate());
+            prescription.setStatus(obj.getStatus());
+            prescription.setPatientId(obj.getPatientId());
+            prescription.setItem(prescriptionItemRepo.findAllById(obj.getItemIds()));
             return prescriptionRepo.save(prescription);
         }
         return null;

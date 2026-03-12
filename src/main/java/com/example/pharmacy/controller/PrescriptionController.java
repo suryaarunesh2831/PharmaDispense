@@ -1,5 +1,6 @@
 package com.example.pharmacy.controller;
 
+import com.example.pharmacy.dto.PrescriptionDTORequest;
 import com.example.pharmacy.model.Prescription;
 import com.example.pharmacy.service.PrescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,12 +8,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 @RestController
-@RequestMapping("/api/prescription")
+@RequestMapping("/PharmaDispense/Prescription")
 public class PrescriptionController {
     @Autowired
     private PrescriptionService prescriptionService;
     @PostMapping("/create/{userId}")
-    public Prescription createPrescription(@PathVariable Integer userId, @RequestBody Prescription prescription)
+    public Prescription createPrescription(@PathVariable Integer userId, @RequestBody PrescriptionDTORequest prescription)
     {
         return prescriptionService.createPrescription(userId,prescription);
     }
@@ -32,3 +33,4 @@ public class PrescriptionController {
         return prescriptionService.deletePrescription(id);
     }
 }
+ 

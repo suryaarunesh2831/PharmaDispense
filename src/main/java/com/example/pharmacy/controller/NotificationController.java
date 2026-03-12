@@ -1,5 +1,6 @@
 package com.example.pharmacy.controller;
 
+import com.example.pharmacy.dto.NotificationRequest;
 import com.example.pharmacy.model.Notification;
 import com.example.pharmacy.model.NotificationCategory;
 import com.example.pharmacy.model.NotificationStatus;
@@ -10,21 +11,29 @@ import com.example.pharmacy.service.NotificationService;
 
 import java.util.*;
 
-@RequestMapping("api/notification")
+@RequestMapping("/PharmaDispense/Notification")
 @RestController
 public class NotificationController {
 
     @Autowired
     NotificationService service;
 
+    // Created after certain actions ( creating prescriptions,Out of Stock... )
     @PostMapping("/create")
-    public Notification createNotification(@RequestBody Notification notification){
+    public Notification createNotification(@RequestBody NotificationRequest notification){
         return  service.createNotification(notification);
     }
 
+    // Admin Views all notifications
     @GetMapping("/get/All")
     public List<Notification> getNotifications(){
         return service.getNotfications();
+    }
+
+    // Admin views notifications by category
+    @GetMapping("/viewBy/category/{category}")
+    public List<Notification> viewByCategory(@PathVariable NotificationCategory category){
+        return service.findByCategory(category);
     }
 
     @GetMapping("/get/{id}")
@@ -33,10 +42,6 @@ public class NotificationController {
         return notification.orElse(null);
     }
 
-    @GetMapping("/viewBy/category/{category}")
-    public List<Notification> viewByCategory(@PathVariable NotificationCategory category){
-        return service.findByCategory(category);
-    }
 
     @GetMapping("/viewBy/status/{status}")
     public List<Notification> viewByStatus(@PathVariable NotificationStatus status){

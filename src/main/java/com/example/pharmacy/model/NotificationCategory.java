@@ -1,5 +1,5 @@
 package com.example.pharmacy.model;
 
 public enum NotificationCategory {
-    ORDER, STOCK, ALERT
+    ORDER, ALERT, REQUEST
 }
