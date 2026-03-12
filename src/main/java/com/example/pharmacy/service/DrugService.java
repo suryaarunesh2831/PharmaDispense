@@ -51,6 +51,14 @@ public class DrugService {
 
 
     }
+//    public List<Drug>getlistofInteractions(Long id)
+//    {
+//        retur
+//    }
+    public List<Drug> getAllSorted()
+    {
+        return drugRepo.sortDrug();
+    }
 
     public String deleteDrugById(Long id)
     {

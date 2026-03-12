@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/PharmaDispense/Drug")
+@RequestMapping("/PharmaDispense/DrugInteraction")
 public class DrugInteractionController {
 
     @Autowired
@@ -58,6 +58,11 @@ public class DrugInteractionController {
     {
         return drugInteractionService.getInteractingDrug(drugid);
 
+    }
+    @GetMapping("/view/alternates/{drugid}")
+    public List<String>getalternates(@PathVariable Long drugid)
+    {
+        return drugInteractionService.getalternates(drugid);
     }
 
 

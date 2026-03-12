@@ -32,6 +32,8 @@ public class Drug {
 
     String route;
 
+    List<String>drugAlternates;
+
     public List<DrugInteraction> getListofinteractions() {
         return listofinteractions;
     }
@@ -42,6 +44,14 @@ public class Drug {
 
     public List<DrugInteraction> getInteractionwith() {
         return interactionwith;
+    }
+
+    public List<String> getDrugAlternates() {
+        return drugAlternates;
+    }
+
+    public void setDrugAlternates(List<String> drugAlternates) {
+        this.drugAlternates = drugAlternates;
     }
 
     public void setInteractionwith(List<DrugInteraction> interactionwith) {

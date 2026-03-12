@@ -85,12 +85,17 @@ public class DrugInteractionService {
         return drugInteractionRepo.findcountofrecords();
     }
 
-    public Long getInteractingDrug(Long drugid)
+    public Long getInteractingDrug(Long id)
     {
-        DrugInteraction drug=drugInteractionRepo.findById(drugid).get();
 
-        return drug.getInteractingdrug().getDrugId();
 
+        return drugInteractionRepo.getInteractingDrug(id);
+
+    }
+    public List<String>getalternates(Long id)
+    {
+
+        return drugrepo.getDrugAlternatesByDrugId(id);
     }
 
 }

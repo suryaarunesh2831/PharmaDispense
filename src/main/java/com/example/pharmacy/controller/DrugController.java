@@ -20,6 +20,7 @@ public class DrugController {
           return drugservice.createdrug(drugitem);
 
     }
+
     @PostMapping("/create/list")
     public  List<Drug> createdrugs(@RequestBody List<Drug>drugitems)
     {
@@ -31,11 +32,18 @@ public class DrugController {
     {
         return drugservice.getDrugById(id);
     }
-    @GetMapping("/view/list")
+    @GetMapping("/view/list/unsorted")
     public List<Drug> getAll()
     {
         return drugservice.getAll();
     }
+    @GetMapping("/view/list/sorted")
+    public List<Drug> getAllSorted()
+    {
+        return drugservice.getAllSorted();
+    }
+
+
     @PutMapping("/modify/{id}")
     public Drug updatedrug(@PathVariable Long id,@RequestBody Drug request)
     {
