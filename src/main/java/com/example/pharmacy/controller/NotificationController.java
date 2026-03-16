@@ -1,10 +1,10 @@
 package com.example.pharmacy.controller;
 
-import com.example.pharmacy.dto.NotificationRequest;
+import com.example.pharmacy.dto.request.NotificationDTORequest;
+import com.example.pharmacy.dto.response.NotificationDTOResponse;
 import com.example.pharmacy.model.Notification;
 import com.example.pharmacy.model.NotificationCategory;
 import com.example.pharmacy.model.NotificationStatus;
-import com.example.pharmacy.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.example.pharmacy.service.NotificationService;
@@ -20,12 +20,12 @@ public class NotificationController {
 
     // Created after certain actions ( creating prescriptions,Out of Stock... )
     @PostMapping("/create")
-    public Notification createNotification(@RequestBody NotificationRequest notification){
+    public NotificationDTOResponse createNotification(@RequestBody NotificationDTORequest notification){
         return  service.createNotification(notification);
     }
 
     // Admin Views all notifications
-    @GetMapping("/get/All")
+    @GetMapping("/viewList")
     public List<Notification> getNotifications(){
         return service.getNotfications();
     }
@@ -36,10 +36,9 @@ public class NotificationController {
         return service.findByCategory(category);
     }
 
-    @GetMapping("/get/{id}")
-    public Notification getNotification(@PathVariable Long id){
-        Optional<Notification> notification = service.getNotification(id);
-        return notification.orElse(null);
+    @GetMapping("/view/{id}")
+    public NotificationDTOResponse getNotification(@PathVariable Long id){
+        return service.getNotification(id);
     }
 
 

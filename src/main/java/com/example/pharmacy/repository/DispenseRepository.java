@@ -11,5 +11,5 @@ import java.util.*;
 
 @Repository
 public interface DispenseRepository extends JpaRepository<DispenseRecord,Long> {
-    Optional<DispenseRecord> findByDispensedDate(LocalDate dispensedDate);
+    List<DispenseRecord> findByDispensedDate(LocalDate dispensedDate);
 }

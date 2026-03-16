@@ -1,5 +1,6 @@
 package com.example.pharmacy.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,6 +17,7 @@ public class PrescriptionItem {
 
     @Id
     int ItemID;
+
     @OneToOne
     @JoinColumn(name="Drug ID")
     private Drug drugObj;
@@ -27,6 +29,7 @@ public class PrescriptionItem {
 
 
    @ManyToOne
+   @JsonBackReference
    @JoinColumn(name="Prescription ID")
    private Prescription prescription;
 }

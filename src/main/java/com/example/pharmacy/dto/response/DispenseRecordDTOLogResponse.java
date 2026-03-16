@@ -1,4 +1,4 @@
-package com.example.pharmacy.dto;
+package com.example.pharmacy.dto.response;
 
 import lombok.*;
 
@@ -9,10 +9,9 @@ import java.time.LocalDate;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DispenseRecordDTOResponse {
+public class DispenseRecordDTOLogResponse {
     private Long drugId;
     private String drugName;
     private int quantity;
-
     private LocalDate date;
 }

@@ -1,6 +1,6 @@
 package com.example.pharmacy.controller;
 
-import com.example.pharmacy.dto.PrescriptionDTORequest;
+import com.example.pharmacy.dto.request.PrescriptionDTORequest;
 import com.example.pharmacy.model.Prescription;
 import com.example.pharmacy.service.PrescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -14,7 +14,7 @@ public class DrugController {
     @Autowired
     DrugService drugservice;
 
-    @PostMapping("/post")
+    @PostMapping("/create")
     public  Drug createdrug(@RequestBody Drug drugitem)
     {
         return drugservice.createdrug(drugitem);

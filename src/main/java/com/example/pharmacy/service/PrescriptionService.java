@@ -1,8 +1,7 @@
 package com.example.pharmacy.service;
 
-import com.example.pharmacy.dto.PrescriptionDTORequest;
+import com.example.pharmacy.dto.request.PrescriptionDTORequest;
 import com.example.pharmacy.model.Prescription;
-import com.example.pharmacy.model.PrescriptionItem;
 import com.example.pharmacy.model.User;
 
 import com.example.pharmacy.repository.PrescriptionItemRepository;
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 
 @Service
@@ -34,7 +32,8 @@ public class PrescriptionService {
             prescription.setCreatedDate(obj.getCreatedDate());
             prescription.setStatus(obj.getStatus());
             prescription.setPatientId(obj.getPatientId());
-            prescription.setItem(prescriptionItemRepo.findAllById(obj.getItemIds()));
+            if(obj.getItemIds()!=null)
+             prescription.setItem(prescriptionItemRepo.findAllById(obj.getItemIds()));
             return prescriptionRepo.save(prescription);
         }
         return null;

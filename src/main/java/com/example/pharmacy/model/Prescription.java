@@ -1,4 +1,5 @@
 package com.example.pharmacy.model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -17,6 +18,7 @@ public class Prescription {
     private String status;
     @ManyToOne
     @JoinColumn(name="physician_id")
+    @JsonBackReference("user-prescriptions")
     private User user;
 
     @OneToMany(mappedBy = "prescription", cascade = CascadeType.ALL, orphanRemoval = true)

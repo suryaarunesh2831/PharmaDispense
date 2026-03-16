@@ -1,6 +1,5 @@
-package com.example.pharmacy.dto;
+package com.example.pharmacy.dto.request;
 
-import com.example.pharmacy.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +15,5 @@ public class PrescriptionDTORequest {
     Long patientId;
     LocalDateTime createdDate;
     String status;
-    User user;
     List<Long> itemIds;
 }

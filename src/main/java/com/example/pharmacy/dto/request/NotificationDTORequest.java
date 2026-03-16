@@ -1,19 +1,16 @@
-package com.example.pharmacy.dto;
+package com.example.pharmacy.dto.request;
 
 import com.example.pharmacy.model.NotificationCategory;
 import com.example.pharmacy.model.NotificationStatus;
-import com.example.pharmacy.model.User;
-import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class NotificationRequest {
+public class NotificationDTORequest {
     long Id;
-    String msg;
+    String message;
     NotificationCategory category;
     NotificationStatus status;
     LocalDateTime creationDate;
