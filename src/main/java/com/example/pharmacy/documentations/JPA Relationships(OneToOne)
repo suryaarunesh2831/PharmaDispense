@@ -1,0 +1,59 @@
+One-to-One Relationship (JPA / Database)
+1. Confirming One-to-One in the Database
+
+For a true one-to-one relationship, one table must store a unique identifier of the other table, usually the primary key.
+
+2. Ensuring Uniqueness
+
+The join column in the owning side must use unique = true.
+This prevents duplicate foreign key values.
+Without this uniqueness, the relationship would behave like one-to-many or many-to-one (e.g., Person–Passport example).
+
+
+mappedBy
+
+Indicates that the relationship already exists, and this side is just referencing it.
+If mappedBy is NOT used in a bidirectional relationship, JPA will create a third join table with both primary keys.
+mappedBy is always used on the non-owning (inverse) side.
+
+
+Owning vs Non-Owning Side
+
+Owning side → The table that contains the foreign key.
+Non-owning (inverse) side → Does not store the foreign key; depends on mappedBy.
+
+
+Bidirectional vs Unidirectional
+
+Bidirectional:
+
+Navigation possible from both entities.
+Example: Person ↔ Passport.
+
+
+Unidirectional:
+
+Only one entity can access the other.
+
+
+
+
+Owning Side Impact
+
+The owning side decides the database updates (inserts, updates of foreign key).
+
+
+Cascade Types
+
+PERSIST → Saving parent also saves child.
+MERGE → Updating parent also updates child.
+REMOVE → Deleting parent deletes child.
+REFRESH → Reloading parent reloads child from DB.
+DETACH → Detaching parent detaches child from persistence context.
+ALL → Applies all the above.
+
+
+JSON Handling
+
+Use @JsonIgnore on the inverse (non-owning) side to prevent infinite recursion during JSON serialization.
+

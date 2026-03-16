@@ -1,0 +1,45 @@
+Many-to-Many Relationship (JPA / Database)
+1. Join Table Requirement
+
+A separate join table must be created in the database.
+This join table contains two foreign keys, each referencing one side of the relationship.
+
+
+2. Owning vs Non-Owning Side
+
+In JPA:
+
+The side that defines the @JoinTable + @JoinColumn is the owning side.
+The side that defines @ManyToMany(mappedBy = "...") is the non-owning (inverse) side.
+
+
+
+
+3. Join Table Written on the Parent Side
+
+The @JoinTable annotation is usually placed on the owning/parent side to define:
+
+The join table name
+The owning side's FK column
+The inverse side's FK column
+
+
+
+
+4. Database Updates
+
+Only the owning side can perform updates to the relationship.
+
+Adding / removing associations is controlled from the owner.
+The non-owner cannot update the join table—only read it.
+
+
+
+
+5. Object Reference Requirement
+
+The owning side must contain a reference to the non-owning side's object.
+This ensures:
+
+JPA can manage the association correctly.
+The join table is updated through the owning entity’s list/set.

@@ -1,0 +1,37 @@
+One-to-Many Relationship (JPA / Database)
+1. Foreign Key Location
+
+The foreign key is always stored on the “Many” side.
+Example:
+
+Employee table contains dept_id (foreign key).
+Department is the “One” side.
+
+
+
+
+2. Foreign Key on Child Side Is Enough
+
+As long as the child table has the FK column, the one-to-many relationship exists at the database level.
+You do not need any special configuration on the parent side unless you want the relationship to be bidirectional.
+
+
+3. Bidirectional Requirement
+
+If you want both sides to access each other (Department ↔ Employee), then:
+
+Parent (Department) must add a @OneToMany(mappedBy = "department").
+Child (Employee) holds the FK with @ManyToOne.
+
+
+
+
+4. Effect of Not Using mappedBy
+
+In a bidirectional one-to-many, if mappedBy is not used:
+
+JPA assumes you want a separate join table.
+It creates a third table containing foreign keys of both sides.
+
+
+This is usually not desired because one-to-many + join table = unnecessary complexity.

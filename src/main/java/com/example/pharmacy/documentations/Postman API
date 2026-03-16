@@ -1,0 +1,38 @@
+Input Planning (Entity Creation & Relationship Setup)
+1. Input Planning Is Flexible
+
+How you plan or design input data is completely up to your workflow.
+The only important rule:
+✔️ Ensure all relationship fields are correctly set in both parent and child entities.
+
+
+2. Relationship Fields Must Be Filled Properly
+
+Whenever an entity has a relationship (One‑to‑One, One‑to‑Many, Many‑to‑Many, etc.):
+
+You must assign the correct relationship object.
+Example: If Employee has a Department field, that field must be assigned before saving.
+
+
+
+
+3. Two Ways to Build Parent–Child Objects
+Method 1: Create Parent First, Then Add Child
+
+Step 1: Create and save the parent entity.
+Step 2: Create the child entity and link it to the parent.
+Step 3: Save the child (or parent again depending on cascade rules).
+
+✔ Useful when child depends on a parent primary key.
+
+Method 2: Initialize Parent Along With Child
+
+Create a parent object and directly set its child object(s).
+Example:
+
+Create Department
+Then create Employee list and assign it inside Department before saving.
+
+
+
+✔ Useful for cascaded relationships where parent automatically persists children.

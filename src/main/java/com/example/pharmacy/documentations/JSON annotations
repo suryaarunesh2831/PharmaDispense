@@ -1,0 +1,23 @@
+JSON Ignore, JSON Managed Reference, JSON Back Reference
+1. @JsonIgnore Behavior
+
+Completely ignores the field during serialization and deserialization.
+If you try to pass values for the ignored field in a request (e.g., Postman),
+→ It will throw an error because the field is not recognized for JSON processing.
+If you use the ignored field inside methods of that class (like getters/setters or logic),
+→ Postman may throw errors since the object might be null or missing during request handling.
+
+
+2. @JsonManagedReference
+
+Shows (serializes) the annotated object.
+Used on the parent / owning side in bidirectional relationships.
+It prevents infinite recursion by controlling which side should be displayed.
+
+
+3. @JsonBackReference
+
+Hides the annotated object from JSON output (serialization).
+Used on the child / inverse side.
+Even though it is hidden, the object is still functional internally and used by Hibernate/JPA.
+Prevents infinite loop while still allowing the relationship to work.

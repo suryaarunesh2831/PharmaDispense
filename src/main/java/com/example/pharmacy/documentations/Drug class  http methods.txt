@@ -1,0 +1,13 @@
+Drug class :
+
+Post :
+     1)Post the drug 
+     2)Post more than one drug
+Get  :
+     1)Get the drug by ID
+     2)Get all the drugs that are avaialble 
+Update:
+     1)Common update method to update specific fields of the drug 
+Delete :
+     1)Delete the drug by ID
+     2)Delete all the drugs are avaialble 
