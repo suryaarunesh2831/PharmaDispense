@@ -1,0 +1,43 @@
+Verification Table and its relationships : 
+
+one to one -> Prescription(Parent) 
+
+one to one -> DispenseRecord(Child) 
+
+
+Prescription Table and its relationships: 
+
+
+one to one -> Verification (child) 
+
+one to many-> PrescriptionItem(child)
+
+
+Prescription Item and its relationships: 
+
+many to one ->Prescription (parent)
+
+one to one -> Drug (parent) 
+
+one to one -> DispenseRecord(child) 
+
+
+Drug table and its relationships: 
+
+one to one -> PrescriptionItem(child)
+
+
+DispenseRecord and its relationships: 
+
+one to one ->Prescription (parent)
+
+one to one -> PrescriptionItem (parent)
+
+one to one -> Verification (parent) 
+
+
+
+
+
+
+

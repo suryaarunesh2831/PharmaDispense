@@ -1,5 +1,4 @@
 package com.example.pharmacy.model;
-
 import com.example.pharmacy.model.PurchaseOrder;
 import jakarta.persistence.*;
 

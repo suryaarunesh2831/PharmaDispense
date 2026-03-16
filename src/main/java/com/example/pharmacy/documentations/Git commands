@@ -1,0 +1,60 @@
+First Time push : Follow the instructions given below the repo
+To create a new branch and switch to it : git checkout -b "branchname"
+To update the branch :
+
+git add . ->to add all the changed files
+git commit -m -> to  commit that change with a message
+git checkout "branchname that you wanna switch to"-> to switch to a particular branch
+
+git pull origin main -> To update all the changes that are made in main (Optional)
+
+git merge "branchname"-> this branchname will be merged to the main
+
+git push origin main -> to push the updated main to github
+
+git push -u origin "branchname"-> to push this branch to github(not necessary to merge it to main)
+
+Creating Individual Branches for Teammates — Clean Notes
+1. Give Access to Teammates
+
+From the main repo, add each teammate as a collaborator.
+Go to: Repository → Settings → Collaborators & Teams
+Ensure all teammates have proper access (Write access).
+
+
+2. Teammates Clone the Repo
+Each teammate clones the repository locally:
+git clone <repo-url>
+
+
+3. View All Remote Branches
+Before creating or switching to a branch, teammates can view all remote branches using:
+git branch -r
+
+This shows something like:
+origin/main
+origin/user1-branch
+origin/user2-branch
+
+
+4. Create & Track Their Own Branch
+If a matching remote branch already exists (created by admin), teammates can link to it locally:
+git checkout -b <branch-name> origin/<branch-name>
+
+Meaning:
+
+-b <branch-name> → creates a local branch
+origin/<branch-name> → connects it to the remote branch
+
+Example:
+git checkout -b john-feature origin/john-feature
+
+
+5. Or Create a Fresh Branch (if not created already)
+If they want to create a brand‑new branch:
+git checkout -b <new-branch>
+git push -u origin <new-branch>
+
+
+
+

@@ -1,95 +1,38 @@
 package com.example.pharmacy.model;
 
-/* IGNORE THIS BLOCK
-    public class User {
- */
-    /** Business key used across the system as FK in many tables. *//*
-    private String userId;
-/*
-    /** Person's display name. *//*
-    private String name;
-
-    /** Role: Physician / Pharmacist / Technician / Inventory / Admin. *//*
-    private String role;
-
-    /** Unique email used for login/communication. *//*
-    private String email;
-
-    /** Optional contact number. *//*
-    private String phone;*/
-/*
-    // --- Constructors ---
-    public User() {}
-    public User(String userId, String name, String role, String email, String phone) {
-        this.userId = userId;
-        this.name = name;
-        this.role = role;
-        this.email = email;
-        this.phone = phone;
-    }
-
-    // --- Getters & Setters ---
-    public String getUserId() { return userId; }
-    public void setUserId(String userId) { this.userId = userId; }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public String getRole() { return role; }
-    public void setRole(String role) { this.role = role; }
-
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
-
-    public String getPhone() { return phone; }
-    public void setPhone(String phone) { this.phone = phone; }
-}   */
-
-import com.example.pharmacy.model.AuditLog;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.*;
 @Data
 @Entity
-@Table(name = "User")
+@Table(name = "User")   // IMPORTANT: escape reserved table name
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int UserID;     // Primary Key
+    private int userID;
 
-    private String Name;    // Full Name
+    private String name;
+    private String role;
+    private String email;
+    private String phone;
 
-    private String Role;    // Physician / Pharmacist / Technician / Inventory / Admin
-
-    private String Email;   // Unique email
-
-    private String Phone;   // Contact No.
-
-    @OneToMany(mappedBy = "user")
+    @Setter
+    @JsonIgnore
+    @OneToMany(mappedBy = "user",cascade=CascadeType.ALL)
     private List<AuditLog>auditlog;
+    public User() {}
 
     @OneToMany(mappedBy ="user" )
-    List<Prescription> listofprescription=new ArrayList<>();
+    @JsonManagedReference("user-prescriptions")
+    private List<Prescription> prescriptions=new ArrayList<>();
 
-    @ManyToMany
-            @JoinTable(
-                    name="UserNotification table",
-                    joinColumns = @JoinColumn(name="UserID"),
-                    inverseJoinColumns = @JoinColumn(name="NotificationId")
-
-            )
-    List<Notification>notificationList=new ArrayList<>();
-
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user_verification")
     List<Verification>verificationList=new ArrayList<>();
-
-    @OneToMany(mappedBy = "user")
-    List<DispenseRecord>verificationList2=new ArrayList<>();
-
 
 
 }

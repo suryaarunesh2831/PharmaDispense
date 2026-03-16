@@ -36,7 +36,7 @@ public class Verification {
 
     @ManyToOne
     @JoinColumn(name="Pharmacist ID")
-    private User user ;
+    private User user_verification ;
 
 
 

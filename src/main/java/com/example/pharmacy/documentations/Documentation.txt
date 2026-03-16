@@ -1,0 +1,19 @@
+MAR :
+	Create:
+		- add one MAR // physician Adds the records
+	Read:
+		- get by id  // Admin, pharmacist view the MAR
+	Delete
+		- delete one MAR //Nurse can Update, delete Record
+
+Pharmacy Report:
+	Create:
+		- create one report // It is created automatically when any pharmacy activity exist
+	Read:
+		- get all reports  // Admin, Pharmacist, Inventory Manager, Physician Views the pharmacy reports
+		- get by id
+	Update:
+		- update by id	// Admin has access to update
+	Delete:
+		- delete by id  // Admin delete the repor
+
