@@ -71,5 +71,8 @@ public class NotificationService {
         return repo.findByStatus(status);
     }
 
+    public void deleteAllNotification(){
+        repo.deleteAll();
+    }
 
 }

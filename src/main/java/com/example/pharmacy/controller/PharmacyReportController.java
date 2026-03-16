@@ -3,6 +3,7 @@ import com.example.pharmacy.dto.request.PharmacyReportDTORequest;
 import com.example.pharmacy.dto.response.PharmacyReportDTOResponse;
 import com.example.pharmacy.model.PharmacyReport;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.pharmacy.service.*;
 import java.util.List;
@@ -16,27 +17,32 @@ public class PharmacyReportController {
     PharmacyReportService service;
 
     @GetMapping("/viewList")
-    public List<PharmacyReport> getAllReports(){
-        return service.getAllReports();
+    public ResponseEntity<List<PharmacyReport>> getAllReports(){
+        List<PharmacyReport> body = service.getAllReports();
+        return ResponseEntity.ok(body);
     }
 
     @GetMapping("/view/{id}")
-    public PharmacyReportDTOResponse readById(@PathVariable int id){
-        return service.readById(id);
+    public ResponseEntity<PharmacyReportDTOResponse> readById(@PathVariable int id){
+        PharmacyReportDTOResponse body = service.readById(id);
+        return ResponseEntity.ok(body);
     }
 
     @PostMapping("/create")
-    public PharmacyReportDTOResponse create(@RequestBody PharmacyReportDTORequest obj){
-        return service.create(obj);
+    public ResponseEntity<PharmacyReportDTOResponse> create(@RequestBody PharmacyReportDTORequest obj){
+        PharmacyReportDTOResponse body = service.create(obj);
+        return ResponseEntity.ok(body);
     }
 
     @PutMapping("/update/{id}")
-    public PharmacyReport update(@PathVariable int id,@RequestBody PharmacyReport obj){
-        return service.update(id,obj);
+    public ResponseEntity<PharmacyReport> update(@PathVariable int id,@RequestBody PharmacyReport obj){
+        PharmacyReport body = service.update(id,obj);
+        return ResponseEntity.ok(body);
     }
 
     @DeleteMapping("/remove/{id}")
-    public void deleteById(@PathVariable  int id){
+    public ResponseEntity<Void> deleteById(@PathVariable  int id){
         service.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

@@ -48,18 +48,21 @@ public class DispenseRecordController {
     }
 
     @PutMapping("/update")
-    public DispenseRecordDTOResponse updateDispenseRecord(@RequestBody DispenseRecord record){
-        return  service.updateDispenseRecord(record);
+    public ResponseEntity<DispenseRecordDTOResponse> updateDispenseRecord(@RequestBody DispenseRecord record){
+        DispenseRecordDTOResponse body = service.updateDispenseRecord(record);
+        return  ResponseEntity.ok(body);
     }
 
     @DeleteMapping("/remove/{id}")
-    public void removeDispenseRecord(@PathVariable  Long id){
+    public ResponseEntity<Void> removeDispenseRecord(@PathVariable  Long id){
         service.removeDispenseRecord(id);
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/remove")
-    public void removeAllDispenseRecord(){
+    public ResponseEntity<Void> removeAllDispenseRecord(){
         service.removeAllDispenseRecord();
+        return ResponseEntity.noContent().build();
     }
 
 }

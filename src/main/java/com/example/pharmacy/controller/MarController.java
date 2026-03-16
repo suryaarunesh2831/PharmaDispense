@@ -5,6 +5,7 @@ import com.example.pharmacy.dto.response.MarDTOResponse;
 import com.example.pharmacy.model.MAR;
 import com.example.pharmacy.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,17 +18,20 @@ public class MarController {
     MarService service;
 
     @PostMapping("/create")
-    public MarDTOResponse create(@RequestBody MarDTORequest obj){
-        return service.create(obj);
+    public ResponseEntity<MarDTOResponse> create(@RequestBody MarDTORequest obj){
+        MarDTOResponse body = service.create(obj);
+        return ResponseEntity.ok(body);
     }
 
     @GetMapping("/viewList")
-    public List<MAR> read(){
-        return service.read();
+    public ResponseEntity<List<MAR>> read(){
+        List<MAR> body = service.read();
+        return ResponseEntity.ok(body);
     }
 
     @DeleteMapping("/remove/{id}")
-    public void deleteMAR(@PathVariable int id){
-            service.deleteById(id);
+    public ResponseEntity<Void> deleteMAR(@PathVariable int id){
+        service.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }
